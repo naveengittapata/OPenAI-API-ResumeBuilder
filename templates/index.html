@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Resume Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Create Your Resume</h1>
+        <form method="POST" action="/">
+            <label for="user_input">Job Description:</label><br>
+            <textarea name="user_input" rows="6" placeholder="Enter the job description here..."></textarea><br><br>
+
+            <label for="education_details">Education:</label><br>
+            <textarea name="education_details" rows="2" placeholder="Enter your education details..."></textarea><br><br>
+
+            <div id="client-fields">
+                <div class="client-field">
+                    <label for="client_name[]">Client Name:</label><br>
+                    <input type="text" name="client_name[]" placeholder="Enter client name"><br>
+                    <label for="start_date[]">Start Date:</label><br>
+                    <input type="text" name="start_date[]" placeholder="Enter start date"><br>
+                    <label for="end_date[]">End Date:</label><br>
+                    <input type="text" name="end_date[]" placeholder="Enter end date"><br><br>
+                </div>
+            </div>
+
+            <button type="button" onclick="addClientField()">Add Another Client</button><br><br>
+
+            <input type="submit" value="Generate Resume">
+        </form>
+    </div>
+
+    <script>
+        function addClientField() {
+            var clientFields = document.getElementById('client-fields');
+            var newClientField = document.createElement('div');
+            newClientField.classList.add('client-field');
+            newClientField.innerHTML = `
+                <label for="client_name[]">Client Name:</label><br>
+                <input type="text" name="client_name[]" placeholder="Enter client name"><br>
+                <label for="start_date[]">Start Date:</label><br>
+                <input type="text" name="start_date[]" placeholder="Enter start date"><br>
+                <label for="end_date[]">End Date:</label><br>
+                <input type="text" name="end_date[]" placeholder="Enter end date"><br><br>
+            `;
+            clientFields.appendChild(newClientField);
+        }
+    </script>
+</body>
+</html>
