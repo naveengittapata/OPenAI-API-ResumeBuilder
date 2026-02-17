@@ -1,0 +1,12 @@
+Flask==3.0.0
+groq
+python-dotenv
+python-docx
+python-dateutil
+Werkzeug>=3.0.0
+Flask-SQLAlchemy
+Flask-Login
+Flask-Bcrypt
+Authlib
+requests
+resend

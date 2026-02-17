@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume.chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(160deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            color: #e8e6f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .landing-container {
+            text-align: center;
+            max-width: 640px;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .logo .dot { color: #a78bfa; }
+
+        .tagline {
+            font-size: 1.15rem;
+            color: #b8b0d4;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .sub-tagline {
+            font-size: 0.95rem;
+            color: #7a7494;
+            margin-bottom: 48px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+
+        .feature-card {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .feature-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .feature-desc {
+            font-size: 0.78rem;
+            color: #9a97b0;
+            line-height: 1.5;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 40px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a78bfa, #7c3aed);
+            color: #ffffff;
+            box-shadow: 0 6px 24px rgba(124, 58, 237, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.5);
+        }
+
+        .btn-secondary {
+            background: #1e293b;
+            color: #d0cbe5;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(167, 139, 250, 0.4);
+            color: #ffffff;
+        }
+
+        .footer {
+            color: #5a5672;
+            font-size: 0.8rem;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .features { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; }
+            .logo { font-size: 2.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <div class="logo">My Resume<span class="dot">.chat</span></div>
+        <p class="tagline">Build your perfect resume in minutes — smart, fast, and tailored to your career</p>
+        <p class="sub-tagline">Powered by AI to craft professional, experience-matched resumes instantly</p>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">&#9889;</div>
+                <div class="feature-title">AI-Powered</div>
+                <div class="feature-desc">Smart content generation tailored to your experience level</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#128196;</div>
+                <div class="feature-title">Instant Export</div>
+                <div class="feature-desc">Download your resume as a professional Word document</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">&#127919;</div>
+                <div class="feature-title">Job-Targeted</div>
+                <div class="feature-desc">Responsibilities and skills matched to your job description</div>
+            </div>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="/signup" class="btn btn-primary">Get Started</a>
+            <a href="/login" class="btn btn-secondary">Sign In</a>
+        </div>
+
+        <div class="footer">My Resume.chat — Powered by AI</div>
+    </div>
+</body>
+</html>

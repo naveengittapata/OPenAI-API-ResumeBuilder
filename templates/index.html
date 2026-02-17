@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume.chat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(160deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+            color: #e8e6f0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 760px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+
+        .header .logo {
+            display: inline-block;
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .header .logo .dot {
+            color: #a78bfa;
+        }
+
+        .header p {
+            color: #b8b0d4;
+            font-size: 1.05rem;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        .card {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 24px;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(167, 139, 250, 0.15);
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #a78bfa;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #d0cbe5;
+            margin-bottom: 10px;
+        }
+
+        textarea,
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"] {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            color: #f5f3ff;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            resize: vertical;
+        }
+
+        textarea:focus,
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        input[type="date"]:focus {
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.18);
+        }
+
+        textarea::placeholder,
+        input::placeholder {
+            color: #7a7494;
+        }
+
+        .disclaimer {
+            font-size: 0.78rem;
+            color: #e0a458;
+            margin-top: 8px;
+            line-height: 1.5;
+            padding: 8px 12px;
+            background: rgba(224, 164, 88, 0.08);
+            border-left: 3px solid #e0a458;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .client-field {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 18px;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .client-field .client-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .client-field .client-number {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a78bfa;
+        }
+
+        .client-field .remove-btn {
+            background: none;
+            border: none;
+            color: #f87171;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+
+        .client-field .remove-btn:hover {
+            background: rgba(248, 113, 113, 0.12);
+        }
+
+        .date-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .btn-add {
+            background: rgba(167, 139, 250, 0.1);
+            color: #a78bfa;
+            border: 1px dashed rgba(167, 139, 250, 0.3);
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .btn-add:hover {
+            background: rgba(167, 139, 250, 0.18);
+            border-color: rgba(167, 139, 250, 0.5);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #a78bfa, #7c3aed);
+            color: #ffffff;
+            width: 100%;
+            justify-content: center;
+            padding: 18px 28px;
+            font-size: 1.05rem;
+            border-radius: 14px;
+            box-shadow: 0 6px 24px rgba(124, 58, 237, 0.35);
+            margin-top: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.5);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 28px;
+            color: #6b6490;
+            font-size: 0.82rem;
+        }
+
+        /* Progress Overlay */
+        .progress-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.92);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .progress-overlay.active {
+            display: flex;
+        }
+
+        .progress-box {
+            background: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 48px 56px;
+            text-align: center;
+            max-width: 460px;
+            width: 90%;
+        }
+
+        .progress-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .progress-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .progress-subtitle {
+            font-size: 0.88rem;
+            color: #9a97b0;
+            margin-bottom: 28px;
+        }
+
+        .progress-bar-wrapper {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #a78bfa, #7c3aed);
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        .progress-percent {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #a78bfa;
+            margin-bottom: 0;
+        }
+
+        .btn-download {
+            display: none;
+            background: linear-gradient(135deg, #34d399, #059669);
+            color: #ffffff;
+            padding: 16px 36px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            margin-top: 24px;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 24px rgba(5, 150, 105, 0.35);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(5, 150, 105, 0.5);
+        }
+
+        .btn-new {
+            display: none;
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #b8b0d4;
+            padding: 12px 28px;
+            font-size: 0.88rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-new:hover {
+            border-color: rgba(167, 139, 250, 0.4);
+            color: #ffffff;
+        }
+
+        @media (max-width: 500px) {
+            .card { padding: 24px; }
+            .date-row { grid-template-columns: 1fr; }
+            .header .logo { font-size: 2rem; }
+            .progress-box { padding: 36px 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
+                <a href="/logout" style="font-size: 0.85rem; color: #9a97b0; text-decoration: none; padding: 8px 18px; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; transition: all 0.2s ease;"
+                   onmouseover="this.style.borderColor='rgba(167,139,250,0.4)'; this.style.color='#fff';"
+                   onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='#9a97b0';">Logout</a>
+            </div>
+            <div class="logo">My Resume<span class="dot">.chat</span></div>
+            <p>Build your perfect resume in minutes — smart, fast, and tailored to your career</p>
+        </div>
+
+        <form method="POST" action="/builder">
+            <div class="card">
+                <div class="section-title">&#128100; Personal Details</div>
+                <div class="date-row">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" name="first_name" id="first_name" placeholder="e.g. John" value="{{ user.first_name or '' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" id="last_name" placeholder="e.g. Doe" value="{{ user.last_name or '' }}" required>
+                    </div>
+                </div>
+                <div class="date-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" name="email" id="email" placeholder="e.g. john@example.com" value="{{ user.email or '' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" name="phone" id="phone" placeholder="e.g. +1 234 567 8900" value="{{ user.phone or '' }}" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="section-title">&#9998; Job Details</div>
+                <div class="form-group">
+                    <label for="user_input">Job Description</label>
+                    <textarea name="user_input" id="user_input" rows="5" placeholder="Paste the target job description here..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="years_of_experience">Years of Experience</label>
+                    <input type="number" name="years_of_experience" id="years_of_experience" min="0" max="50" placeholder="e.g. 5" required>
+                    <div class="disclaimer">This does not need to match your total client experience. It is used to generate more relevant and experience-appropriate responsibilities.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="section-title">&#127891; Education</div>
+                <div class="form-group">
+                    <label for="education_details">Education Details</label>
+                    <textarea name="education_details" id="education_details" rows="3" placeholder="e.g. B.S. in Computer Science, MIT, 2020" required></textarea>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="section-title">&#128188; Professional Experience</div>
+                <div id="client-fields">
+                    <div class="client-field">
+                        <div class="client-header">
+                            <span class="client-number">Client 1</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Client / Company Name</label>
+                            <input type="text" name="client_name[]" placeholder="e.g. Google, Accenture..." required>
+                        </div>
+                        <div class="date-row">
+                            <div class="form-group">
+                                <label>Start Date</label>
+                                <input type="text" name="start_date[]" placeholder="e.g. Jan 2021" required>
+                            </div>
+                            <div class="form-group">
+                                <label>End Date</label>
+                                <input type="text" name="end_date[]" placeholder="e.g. Dec 2023">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-add" onclick="addClientField()">+ Add Another Client</button>
+            </div>
+
+            <button type="submit" class="btn btn-submit">&#9889; Generate Resume</button>
+        </form>
+
+        <div class="footer">My Resume.chat — Powered by AI</div>
+    </div>
+
+    <!-- Progress Overlay -->
+    <div class="progress-overlay" id="progressOverlay">
+        <div class="progress-box">
+            <div class="progress-icon" id="progressIcon">&#9889;</div>
+            <div class="progress-title" id="progressTitle">Generating Your Resume...</div>
+            <div class="progress-subtitle" id="progressSubtitle">Our AI is crafting your professional resume</div>
+            <div class="progress-bar-wrapper" id="progressBarWrapper">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <div class="progress-percent" id="progressPercent">0%</div>
+            <button class="btn-download" id="btnDownload" onclick="downloadFile()">&#11015; Download Resume</button>
+            <button class="btn-new" id="btnNew" onclick="resetForm()">&#8634; Generate Another</button>
+        </div>
+    </div>
+
+    <script>
+        let clientCount = 1;
+        let downloadBlob = null;
+
+        function addClientField() {
+            clientCount++;
+            const clientFields = document.getElementById('client-fields');
+            const newField = document.createElement('div');
+            newField.classList.add('client-field');
+            newField.innerHTML = `
+                <div class="client-header">
+                    <span class="client-number">Client ${clientCount}</span>
+                    <button type="button" class="remove-btn" onclick="removeClient(this)">&#10005; Remove</button>
+                </div>
+                <div class="form-group">
+                    <label>Client / Company Name</label>
+                    <input type="text" name="client_name[]" placeholder="e.g. Google, Accenture..." required>
+                </div>
+                <div class="date-row">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="text" name="start_date[]" placeholder="e.g. Jan 2021" required>
+                    </div>
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="text" name="end_date[]" placeholder="e.g. Dec 2023">
+                    </div>
+                </div>
+            `;
+            clientFields.appendChild(newField);
+        }
+
+        function removeClient(btn) {
+            const field = btn.closest('.client-field');
+            field.style.opacity = '0';
+            field.style.transform = 'translateY(-10px)';
+            field.style.transition = 'all 0.2s ease';
+            setTimeout(() => field.remove(), 200);
+        }
+
+        // Handle form submit with progress
+        document.querySelector('form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const overlay = document.getElementById('progressOverlay');
+            const fill = document.getElementById('progressBarFill');
+            const percent = document.getElementById('progressPercent');
+            const title = document.getElementById('progressTitle');
+            const subtitle = document.getElementById('progressSubtitle');
+            const icon = document.getElementById('progressIcon');
+            const barWrapper = document.getElementById('progressBarWrapper');
+            const btnDownload = document.getElementById('btnDownload');
+            const btnNew = document.getElementById('btnNew');
+
+            // Reset state
+            fill.style.width = '0%';
+            percent.textContent = '0%';
+            title.textContent = 'Generating Your Resume...';
+            subtitle.textContent = 'Our AI is crafting your professional resume';
+            icon.innerHTML = '&#9889;';
+            barWrapper.style.display = 'block';
+            percent.style.display = 'block';
+            btnDownload.style.display = 'none';
+            btnNew.style.display = 'none';
+            overlay.classList.add('active');
+
+            // Animate progress bar (simulated)
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                if (progress < 90) {
+                    progress += Math.random() * 8 + 2;
+                    if (progress > 90) progress = 90;
+                    fill.style.width = Math.round(progress) + '%';
+                    percent.textContent = Math.round(progress) + '%';
+                }
+            }, 500);
+
+            try {
+                const formData = new FormData(this);
+                const response = await fetch('/builder', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                clearInterval(progressInterval);
+
+                if (response.ok) {
+                    downloadBlob = await response.blob();
+
+                    // Complete the progress bar
+                    fill.style.width = '100%';
+                    percent.textContent = '100%';
+
+                    setTimeout(() => {
+                        title.textContent = 'Resume Ready!';
+                        subtitle.textContent = 'Your professional resume has been generated successfully';
+                        icon.innerHTML = '&#9989;';
+                        barWrapper.style.display = 'none';
+                        percent.style.display = 'none';
+                        btnDownload.style.display = 'inline-block';
+                        btnNew.style.display = 'inline-block';
+                    }, 600);
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch (err) {
+                clearInterval(progressInterval);
+                title.textContent = 'Something went wrong';
+                subtitle.textContent = 'Please try again';
+                icon.innerHTML = '&#10060;';
+                barWrapper.style.display = 'none';
+                percent.style.display = 'none';
+                btnNew.style.display = 'inline-block';
+            }
+        });
+
+        function downloadFile() {
+            if (!downloadBlob) return;
+            const url = URL.createObjectURL(downloadBlob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'creative_resume.docx';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function resetForm() {
+            document.getElementById('progressOverlay').classList.remove('active');
+            downloadBlob = null;
+        }
+    </script>
+</body>
+</html>

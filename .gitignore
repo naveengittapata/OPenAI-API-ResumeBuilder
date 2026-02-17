@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+instance/
+*.db
+check_db.py
+check_smtp.py
+.venv/
+venv/
